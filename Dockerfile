@@ -6,8 +6,8 @@ RUN apk add --update bash && apk add --update mysql-client && rm -rf /var/cache/
 ENV MYSQLDUMP_OPTIONS --single-transaction --lock-tables=false
 ENV MYSQL_DATABASE None
 
-ENV AWS_ACCESS_KEY None
-ENV AWS_SECRET None
+ENV AWS_ACCESS_KEY_ID None
+ENV AWS_SECRET_ACCESS_KEY None
 ENV AWS_PATH None
 
 ADD entrypoint.sh /entrypoint.sh
