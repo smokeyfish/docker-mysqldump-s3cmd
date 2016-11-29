@@ -10,7 +10,5 @@ ENV AWS_ACCESS_KEY_ID None
 ENV AWS_SECRET_ACCESS_KEY None
 ENV AWS_PATH None
 
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-CMD ["/entrypoint.sh"]
+ADD backup.sh /backup.sh
+RUN chmod +x /backup.sh
