@@ -37,7 +37,7 @@ HOST_PARAMS="-h $MYSQL_HOST --port $MYSQL_PORT -u $MYSQL_USER -p$MYSQL_PASSWORD"
 
 echo "[mysqlbackup] Beginning mysqldump of ${MYSQL_HOST}/${MYSQL_DATABASE}"
 
-if [ "${AWS_ACCESS_KEY_ID}" = "None" ] || [ "${AWS_SECRET_ACCESS_KEY}" = "None" ]; then
+if [ -z "${AWS_ACCESS_KEY_ID}" ] || [ -z "${AWS_SECRET_ACCESS_KEY}" ]; then
     echo "[mysqlbackup] Not using AWS credentials with s3cmd"
     mysqldump $HOST_PARAMS $MYSQLDUMP_OPTIONS $MYSQL_DATABASE | gzip | s3cmd put - s3://$AWS_PATH/$MYSQL_DATABASE-$(date +"%Y%m%d%H%M%S").sql.gz
 else
