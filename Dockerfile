@@ -11,4 +11,5 @@ ENV AWS_SECRET_ACCESS_KEY None
 ENV AWS_PATH None
 
 ADD backup.sh /backup.sh
+ADD .s3cfg /root/.s3cfg
 RUN chmod +x /backup.sh
