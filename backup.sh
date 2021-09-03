@@ -37,7 +37,7 @@ HOST_PARAMS="-h $MYSQL_HOST --port $MYSQL_PORT -u $MYSQL_USER -p$MYSQL_PASSWORD"
 
 echo "[mysqlbackup] Beginning mysqldump of ${MYSQL_HOST}/${MYSQL_DATABASE}"
 
-mysqldump $HOST_PARAMS $MYSQLDUMP_OPTIONS $MYSQL_DATABASE | gzip | s3cmd put - s3://$AWS_PATH/$MYSQL_DATABASE-$(date +"%Y%m%d%H%M%S").sql.gz
+mysqldump $HOST_PARAMS $MYSQLDUMP_OPTIONS $MYSQL_DATABASE | gzip | aws s3 cp - s3://$AWS_PATH/$MYSQL_DATABASE-$(date +"%Y%m%d%H%M%S").sql.gz
 
 echo "[mysqlbackup] Finished"
 
